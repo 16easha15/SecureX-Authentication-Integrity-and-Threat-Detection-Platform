@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Secure Password System</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- Navbar -->
+<div class="navbar">
+    <span class="menu active" onclick="setMode('register')">Register</span>
+    <span class="menu" onclick="setMode('login')">Login</span>
+    <span class="menu" onclick="setMode('history')">History</span>
+</div>
+
+<!-- FORM BOX -->
+<div class="container" id="formBox">
+<h2 id="title">Register</h2>
+
+<div class="input-group">
+<input type="text" id="username" placeholder=" ">
+<label>Username</label>
+</div>
+
+<div class="input-group">
+<input type="password" id="password" placeholder=" " oninput="checkStrength()">
+<label>Password</label>
+<span class="eye" id="eyeIcon" onclick="togglePassword()">👁️</span>
+<div class="strength" id="strengthBar"></div>
+</div>
+
+<button onclick="handleAction()">Submit</button>
+<div class="message" id="message"></div>
+</div>
+
+<!-- HISTORY BOX -->
+<div class="container" id="historyBox" style="display:none;">
+<h2>Login History</h2>
+<ul id="historyList"></ul>
+</div>
+
+<!-- POPUP -->
+<div class="popup" id="popup">
+<div class="popup-box">
+<p id="popupText"></p>
+<button onclick="closePopup()">OK</button>
+</div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
