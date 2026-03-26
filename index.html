@@ -1,54 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Secure Password System</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>SecureX - Authentication</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
+<body class="auth-body">
 
-<body>
+    <div class="auth-wrapper">
+        <div class="card auth-card">
+            <h2 id="title">Register</h2>
+            <p class="subtitle">SecureX: Authentication, Integrity and Threat Detection Platform</p>
 
-<!-- Navbar -->
-<div class="navbar">
-    <span class="menu active" onclick="setMode('register')">Register</span>
-    <span class="menu" onclick="setMode('login')">Login</span>
-    <span class="menu" onclick="setMode('history')">History</span>
-</div>
+            <div class="input-group">
+                <input type="text" id="username" placeholder="Enter Username" />
+            </div>
 
-<!-- FORM BOX -->
-<div class="container" id="formBox">
-<h2 id="title">Register</h2>
+            <div class="input-group password-wrapper">
+                <input type="password" id="password" placeholder="Enter Password" oninput="analyzePassword()" />
+                <button type="button" class="eye-btn" id="eyeBtn" onclick="togglePassword()">👁️</button>
+            </div>
 
-<div class="input-group">
-<input type="text" id="username" placeholder=" ">
-<label>Username</label>
-</div>
+            <div class="input-group">
+                <select id="role">
+                    <option value="">Select Role</option>
+                    <option value="Admin">Admin</option>
+                    <option value="User">User</option>
+                </select>
+            </div>
 
-<div class="input-group">
-<input type="password" id="password" placeholder=" " oninput="checkStrength()">
-<label>Password</label>
-<span class="eye" id="eyeIcon" onclick="togglePassword()">👁️</span>
-<div class="strength" id="strengthBar"></div>
-</div>
+            <div class="score-box">
+                <label>Security Score</label>
+                <div class="progress-bar">
+                    <div id="scoreFill"></div>
+                </div>
+                <small id="scoreText">Empty</small>
+            </div>
 
-<button onclick="handleAction()">Submit</button>
-<div class="message" id="message"></div>
-</div>
+            <button id="mainBtn" onclick="registerUser()">Register</button>
 
-<!-- HISTORY BOX -->
-<div class="container" id="historyBox" style="display:none;">
-<h2>Login History</h2>
-<ul id="historyList"></ul>
-</div>
+            <p class="switch-text">
+                Already have an account?
+                <span onclick="switchToLogin()">Login</span>
+            </p>
 
-<!-- POPUP -->
-<div class="popup" id="popup">
-<div class="popup-box">
-<p id="popupText"></p>
-<button onclick="closePopup()">OK</button>
-</div>
-</div>
+            <div id="mfaSection" class="hidden">
+                <div class="input-group">
+                    <input type="text" id="mfaCode" placeholder="Enter MFA Code" />
+                </div>
+                <button onclick="verifyMFA()">Verify MFA</button>
+            </div>
 
-<script src="script.js"></script>
+            <div id="hashBox" class="hash-box hidden">
+                <strong>SHA-256 Password Hash:</strong>
+                <p id="hashText"></p>
+            </div>
+
+            <p id="message" class="message"></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>

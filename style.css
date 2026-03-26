@@ -1,253 +1,339 @@
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Poppins;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-body{
-min-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-flex-direction:column;
-background:linear-gradient(270deg,#141e30,#243b55);
-background-size:400% 400%;
-animation:bg 8s infinite;
-padding:20px;
+body.auth-body,
+body.dashboard-body {
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #5b86e5, #36d1dc);
+    color: white;
+    overflow-x: hidden;
 }
 
-@keyframes bg{
-0%{background-position:0%}
-50%{background-position:100%}
-100%{background-position:0%}
+/* AUTH */
+body.auth-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
 }
 
-/* NAVBAR */
-.navbar{
-position:fixed;
-top:15px;
-left:50%;
-transform:translateX(-50%);
-display:flex;
-gap:15px;
-background:rgba(255,255,255,0.1);
-padding:10px 15px;
-border-radius:20px;
-backdrop-filter:blur(10px);
-z-index:1000;
-width:fit-content;
+.auth-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.menu{
-cursor:pointer;
-color:#ccc;
-font-size:14px;
-transition:0.3s;
+.card.auth-card,
+.card.dashboard-card {
+    background: rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-radius: 24px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+    color: white;
 }
 
-.menu.active{
-color:#00ffd5;
-font-weight:bold;
+.card.auth-card {
+    width: 100%;
+    max-width: 430px;
+    padding: 30px 25px;
 }
 
-/* CONTAINER */
-.container{
-width:100%;
-max-width:400px;
-margin-top:100px;
-padding:30px 20px;
-border-radius:20px;
-background:rgba(255,255,255,0.08);
-backdrop-filter:blur(15px);
-box-shadow:0 8px 30px rgba(0,0,0,0.5);
-color:white;
-text-align:center;
+#title {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 10px;
 }
 
-h2{
-margin-bottom:20px;
-font-size:22px;
+.subtitle {
+    text-align: center;
+    font-size: 14px;
+    margin-bottom: 25px;
+    color: #f1f1f1;
+    line-height: 1.5;
 }
 
-.input-group{
-position:relative;
-margin-bottom:15px;
+.input-group {
+    margin-bottom: 16px;
+    position: relative;
 }
 
-input{
-width:100%;
-padding:14px;
-border:none;
-border-radius:10px;
-background:rgba(255,255,255,0.1);
-color:white;
-outline:none;
-font-size:14px;
+input, select, button, textarea {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 14px;
+    font-size: 16px;
+    outline: none;
 }
 
-label{
-position:absolute;
-top:12px;
-left:12px;
-color:#aaa;
-font-size:12px;
-transition:.3s;
+input, select, textarea {
+    background: rgba(255,255,255,0.92);
+    color: #222;
 }
 
-input:focus+label,
-input:not(:placeholder-shown)+label{
-top:-8px;
-font-size:10px;
-color:#00ffd5;
+textarea {
+    min-height: 120px;
+    resize: vertical;
+    margin-bottom: 15px;
 }
 
-.eye{
-position:absolute;
-right:12px;
-top:12px;
-cursor:pointer;
-font-size:14px;
+button {
+    background: linear-gradient(90deg, #ff9a9e, #fad0c4);
+    color: #222;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease;
+    margin-top: 10px;
 }
 
-.strength{
-height:6px;
-border-radius:5px;
-margin-top:5px;
+button:hover {
+    transform: scale(1.02);
 }
 
-/* BUTTON */
-button{
-width:100%;
-padding:14px;
-margin-top:10px;
-border:none;
-border-radius:10px;
-background:linear-gradient(45deg,#00ffd5,#00aaff);
-font-weight:bold;
-cursor:pointer;
-font-size:15px;
+.password-wrapper {
+    position: relative;
 }
 
-.message{
-margin-top:10px;
-font-size:13px;
+.password-wrapper input {
+    padding-right: 50px;
 }
 
-/* POPUP */
-.popup{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.6);
-display:flex;
-justify-content:center;
-align-items:center;
-visibility:hidden;
-opacity:0;
-transition:.3s;
+.eye-btn {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255,255,255,0.85);
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 0;
 }
 
-.popup.active{
-visibility:visible;
-opacity:1;
+.score-box {
+    margin: 18px 0;
 }
 
-.popup-box{
-background:#222;
-padding:20px;
-border-radius:15px;
-text-align:center;
-color:white;
-width:85%;
-max-width:300px;
+.score-box label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: white;
 }
 
-/* HISTORY */
-#historyBox{
-width:100%;
-max-width:400px;
-margin-top:100px;
+.progress-bar {
+    width: 100%;
+    height: 12px;
+    background: rgba(255,255,255,0.25);
+    border-radius: 999px;
+    overflow: hidden;
 }
 
-#historyBox ul{
-list-style:none;
-margin-top:10px;
-max-height:300px;
-overflow-y:auto;
+#scoreFill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(to right, red, orange, yellow, limegreen);
+    transition: width 0.3s ease;
 }
 
-#historyBox li{
-font-size:12px;
-margin-bottom:5px;
-border-bottom:1px solid #555;
-padding:5px 0;
+#scoreText {
+    display: block;
+    margin-top: 8px;
+    color: #fff;
+    font-size: 13px;
 }
 
-/* 🔥 MOBILE OPTIMIZATION FOR GALAXY A23 & MODERN PHONES */
-@media (max-width: 480px) {
-    body {
-        padding: 15px;
-        /* Center content vertically if the screen is tall like A23 */
-        justify-content: center; 
+.switch-text {
+    text-align: center;
+    margin-top: 18px;
+    font-size: 14px;
+}
+
+.switch-text span {
+    color: #fffacd;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.message {
+    text-align: center;
+    margin-top: 18px;
+    font-weight: bold;
+    color: #fff;
+    word-wrap: break-word;
+}
+
+.hash-box {
+    margin-top: 16px;
+    background: rgba(255,255,255,0.15);
+    padding: 14px;
+    border-radius: 14px;
+    word-break: break-word;
+    font-size: 13px;
+}
+
+.hidden {
+    display: none;
+}
+
+/* DASHBOARD */
+.dashboard-body {
+    display: flex;
+}
+
+.sidebar {
+    width: 250px;
+    min-height: 100vh;
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(16px);
+    padding: 30px 20px;
+    box-shadow: 4px 0 18px rgba(0,0,0,0.18);
+}
+
+.sidebar h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 28px;
+}
+
+.sidebar a {
+    display: block;
+    text-decoration: none;
+    color: white;
+    padding: 14px 16px;
+    margin-bottom: 12px;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.08);
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    background: rgba(255,255,255,0.22);
+}
+
+.main-content {
+    flex: 1;
+    padding: 30px;
+}
+
+.project-header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.project-header h1 {
+    font-size: 34px;
+    margin-bottom: 10px;
+}
+
+.project-header p {
+    font-size: 18px;
+    color: #f3f3f3;
+}
+
+.card.dashboard-card {
+    padding: 28px;
+    text-align: center;
+}
+
+.history-list {
+    list-style: none;
+    padding: 0;
+}
+
+.history-list li {
+    background: rgba(255,255,255,0.12);
+    padding: 15px;
+    border-radius: 14px;
+    margin-bottom: 14px;
+}
+
+.result-box {
+    margin-top: 18px;
+    padding: 16px;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.12);
+    line-height: 1.7;
+    word-break: break-word;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 18px;
+}
+
+.user-table th,
+.user-table td {
+    padding: 14px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    white-space: nowrap;
+}
+
+.user-table th {
+    background: rgba(255,255,255,0.12);
+}
+
+.about-content {
+    line-height: 1.9;
+    font-size: 18px;
+}
+
+@media (max-width: 900px) {
+    .dashboard-body {
+        flex-direction: column;
     }
 
-    /* Navbar: Balanced spacing */
-    .navbar {
-        width: 90%;
-        top: 10px;
-        padding: 8px 12px;
-    }
-
-    .menu {
-        font-size: 13px;
-    }
-
-    /* Container: Remove the 90px padding and use reasonable values */
-    .container {
+    .sidebar {
         width: 100%;
-        margin-top: 60px; /* Space for fixed navbar */
-        padding: 25px 20px;
-        border-radius: 15px;
+        min-height: auto;
     }
 
-    h2 {
-        font-size: 20px;
-        margin-bottom: 15px;
+    .main-content {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 500px) {
+    .card.auth-card,
+    .card.dashboard-card {
+        align-content: center;
+        padding: 22px 18px;
+        border-radius: 18px;
     }
 
-    /* Inputs: Fixed the massive 58px padding issue */
-    input {
-        padding: 12px 40px 12px 12px; /* Extra right padding for the eye icon */
-        font-size: 16px; /* Prevents iOS/Android auto-zoom on focus */
+    #title {
+        font-size: 24px;
     }
 
-    label {
-        font-size: 13px;
-        top: 12px;
-    }
-
-    /* Button: Sized for easy thumb tapping */
-    button {
-        padding: 15px;
+    .subtitle {
         font-size: 16px;
-        margin-top: 5px;
     }
 
-    /* Eye Icon alignment */
-    .eye {
-        top: 12px;
-        right: 12px;
+    input, select, button, textarea {
+        font-size: 15px;
+        padding: 12px;
     }
 
-    /* History List: Ensure it doesn't overflow the screen */
-    #historyBox {
-        margin-top: 60px;
+    .project-header h1 {
+        font-size: 26px;
     }
-    
-    #historyBox ul {
-        max-height: 50vh; /* Adjust height based on screen size */
+
+    .project-header p {
+        font-size: 15px;
     }
 }

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SecureX - Authentication</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="auth-body">
+
+  <div class="auth-wrapper">
+    <div class="card auth-card">
+      <h2 id="title">Register</h2>
+      <p class="subtitle">SecureX: Authentication, Integrity and Threat Detection Platform</p>
+
+      <div class="input-group">
+        <input type="text" id="username" placeholder="Enter Username" />
+      </div>
+
+      <div class="input-group">
+        <input type="password" id="password" placeholder="Enter Password" oninput="analyzePassword()" />
+      </div>
+
+      <div class="input-group" id="roleBox">
+        <select id="role">
+          <option value="user">User</option>
+          <option value="admin">Admin</option>
+        </select>
+      </div>
+
+      <div class="score-wrapper">
+        <div class="score-label">Security Score</div>
+        <div class="score-bar">
+          <div id="scoreFill"></div>
+        </div>
+        <div id="scoreText">Not Checked</div>
+      </div>
+
+      <div id="breachWarning" class="breach-warning"></div>
+
+      <button onclick="handleAuth()">Submit</button>
+
+      <p class="switch-text">
+        <span id="toggleText" onclick="toggleMode()">Switch to Login</span>
+      </p>
+
+      <div id="statusMsg" class="status-msg"></div>
+      <div id="hashBox" class="hash-box"></div>
+
+      <div id="mfaBox" class="mfa-box" style="display:none;">
+        <h3>Multi-Factor Authentication</h3>
+        <p class="small-text">Enter the 6-digit verification code</p>
+        <input type="text" id="mfaCode" placeholder="Enter MFA Code" />
+        <button onclick="verifyMFA()">Verify MFA</button>
+        <div id="mfaInfo" class="mfa-info"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

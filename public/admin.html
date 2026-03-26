@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Panel</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="dashboard-body">
+
+  <div class="sidebar">
+    <h2>SecureX</h2>
+    <a href="dashboard.html">🏠 Dashboard</a>
+    <a href="integrity.html">🔐 Integrity Checker</a>
+    <a href="admin.html">👨‍💼 Admin Panel</a>
+    <a href="#" onclick="logout()">🚪 Logout</a>
+  </div>
+
+  <div class="main-content">
+    <div class="card dashboard-card">
+      <h2>Admin Panel</h2>
+      <p class="subtitle">Role-Based Access Control: only admin can manage this page</p>
+
+      <div class="table-wrapper">
+        <table class="user-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Username</th>
+              <th>Role</th>
+              <th>Threat Status</th>
+              <th>Failed Attempts</th>
+              <th>Locked Until</th>
+              <th>Created At</th>
+            </tr>
+          </thead>
+          <tbody id="userTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

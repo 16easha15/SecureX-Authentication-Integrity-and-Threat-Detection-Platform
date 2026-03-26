@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SecureX Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="dashboard-body">
+
+  <div class="sidebar">
+    <h2>SecureX</h2>
+    <a href="dashboard.html">🏠 Dashboard</a>
+    <a href="history.html">📜 Login History</a>
+    <a href="integrity.html">🔐 Integrity Checker</a>
+    <a href="about.html">ℹ️ About</a>
+    <a href="admin.html" id="adminLink">👨‍💼 Admin Panel</a>
+    <a href="#" onclick="logout()">🚪 Logout</a>
+  </div>
+
+  <div class="main-content">
+    <div class="card dashboard-card">
+      <h1 id="projectTitle">SecureX</h1>
+      <p class="subtitle">
+        Authentication, Integrity Checking, Threat Detection and Access Control System
+      </p>
+
+      <h3 id="welcomeUser">Welcome, User</h3><br>
+
+      
+
+      <div class="dashboard-section">
+        <h2>Quick Overview</h2>
+        <p>
+          Use the left sidebar to access your Login History, Integrity Checker,
+          About Project section and Admin Panel (if permitted).
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

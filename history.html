@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login History</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="dashboard-body">
+
+  <div class="sidebar">
+    <h2>SecureX</h2>
+    <a href="dashboard.html">🏠 Dashboard</a>
+    <a href="history.html">📜 Login History</a>
+    <a href="integrity.html">🔐 Integrity Checker</a>
+    <a href="about.html">ℹ About</a>
+    <a href="admin.html" id="adminLink">👨‍💼 Admin Panel</a>
+    <a href="#" onclick="logout()">🚪 Logout</a>
+  </div>
+
+  <div class="main-content">
+    <div class="top-header">
+      <h1>SecureX</h1>
+      <h3 id="welcomeUser">Welcome, User</h3>
+    </div>
+
+    <div class="card dashboard-card">
+      <h2>Login History</h2>
+      <p class="subtitle">Recent authentication events and suspicious activities</p>
+      <ul id="historyList" class="history-list"></ul>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

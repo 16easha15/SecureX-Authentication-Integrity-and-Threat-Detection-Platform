@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Integrity Checker</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="dashboard-body">
+
+  <div class="sidebar">
+    <h2>SecureX</h2>
+    <a href="dashboard.html">🏠 Dashboard</a>
+    <a href="integrity.html">🔐 Integrity Checker</a>
+    <a href="history.html">📜 Login History</a>
+    <a href="about.html">ℹ️ About</a>
+    <a href="admin.html" id="adminLink">👨‍💼 Admin Panel</a>
+    <a href="#" onclick="logout()">🚪 Logout</a>
+  </div>
+
+  <div class="main-content">
+    <div class="project-header">
+      <h1>SecureX</h1>
+      <p id="welcomeText">Welcome, User</p>
+    </div>
+
+    <div class="card dashboard-card">
+      <h2>Integrity Checker</h2>
+      <p class="subtitle">Compare hash values to detect tampering</p>
+
+      <textarea id="msg1" placeholder="Enter Original Message"></textarea>
+      <textarea id="msg2" placeholder="Enter Modified Message"></textarea>
+
+      <button onclick="checkIntegrity()">Check Integrity</button>
+
+      <div id="result" class="result-box"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
