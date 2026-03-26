@@ -10,10 +10,11 @@ app.use(express.json());
 app.use(express.static(__dirname)); // keep same
 
 const db = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "root@1",
-    database: "securex_db"
+    host: process.env.MYSQLHOST || "localhost",
+    user: process.env.MYSQLUSER || "root",
+    password: process.env.MYSQLPASSWORD || "root@1",
+    database: process.env.MYSQLDATABASE || "securex_db",
+    port: process.env.MYSQLPORT || 3306
 });
 
 db.connect((err) => {
@@ -206,6 +207,8 @@ app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "index.html"));
 });
 
-app.listen(3000, "0.0.0.0", () => {
-    console.log("Server running on http://localhost:3000");
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, "0.0.0.0", () => {
+    console.log(`Server running on port ${PORT}`);
 });
